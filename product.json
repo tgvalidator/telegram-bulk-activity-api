@@ -1,0 +1,87 @@
+{
+  "name": "Telegram Bulk Activity Check",
+  "brand": "TG Validator",
+  "repository": "tgvalidator/telegram-bulk-activity-api",
+  "description": "Registration status plus username, user ID, last-seen time, active days and the member flag across a whole list.",
+  "official_site": "https://tgvalidator.com",
+  "landing_page": "https://tgvalidator.com/products/tg_active_batch",
+  "canonical_docs": "https://tgvalidator.com/api-docs",
+  "base_url": "https://tgvalidator.com",
+  "auth": {
+    "type": "api_key",
+    "header": "X-API-Key"
+  },
+  "mode": "async-bulk",
+  "product": "tg_active_batch",
+  "identifier_kind": "phone",
+  "requires_country": true,
+  "endpoints": {
+    "submit": {
+      "method": "POST",
+      "path": "/api/v1/bulk-tasks"
+    },
+    "status": {
+      "method": "GET",
+      "path": "/api/v1/bulk-tasks/{id}"
+    },
+    "balance": {
+      "method": "GET",
+      "path": "/api/v1/balance"
+    }
+  },
+  "limits": {
+    "min_items": 1000,
+    "max_items": 100000,
+    "poll_interval_seconds": 30,
+    "file_formats": [
+      "txt",
+      "csv"
+    ]
+  },
+  "result_fields": [
+    {
+      "name": "number",
+      "example": "17253100591",
+      "description": "The submitted number."
+    },
+    {
+      "name": "activated",
+      "example": "yes",
+      "description": "Whether the number is registered on Telegram."
+    },
+    {
+      "name": "uid",
+      "example": "1234567890",
+      "description": "Telegram user id."
+    },
+    {
+      "name": "username",
+      "example": "alex_kim",
+      "description": "Username, empty when the account has none."
+    },
+    {
+      "name": "lastseen",
+      "example": "2026-04-26 17:01:17",
+      "description": "The most recent online time observed."
+    },
+    {
+      "name": "activedays",
+      "example": "130",
+      "description": "Days since that activity — smaller is more recent."
+    },
+    {
+      "name": "member",
+      "example": "no",
+      "description": "Whether the account has Telegram Premium."
+    }
+  ],
+  "statuses": [
+    "processing",
+    "success",
+    "failed"
+  ],
+  "pricing_url": "https://tgvalidator.com/pricing",
+  "maintainer": "TG Validator",
+  "license": "MIT",
+  "last_reviewed": "2026-09-22"
+}
