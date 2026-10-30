@@ -1,5 +1,5 @@
 {
-  "name": "Telegram Bulk Activity Check",
+  "name": "Telegram bulk activity check",
   "brand": "TG Validator",
   "repository": "tgvalidator/telegram-bulk-activity-api",
   "description": "Registration status plus username, user ID, last-seen time, active days and the member flag across a whole list.",
@@ -31,7 +31,7 @@
   },
   "limits": {
     "min_items": 1000,
-    "max_items": 100000,
+    "max_items": 500000,
     "poll_interval_seconds": 30,
     "file_formats": [
       "txt",
@@ -40,39 +40,29 @@
   },
   "result_fields": [
     {
-      "name": "number",
-      "example": "17253100591",
-      "description": "The submitted number."
+      "name": "identifier",
+      "example": "12345678900",
+      "description": "Submitted identifier, used to join the result to the input. Phone identifiers include their country code."
     },
     {
       "name": "activated",
-      "example": "yes",
-      "description": "Whether the number is registered on Telegram."
+      "example": "true",
+      "description": "The determined positive/negative signal for this product; interpret it in the product context."
     },
     {
       "name": "uid",
       "example": "1234567890",
-      "description": "Telegram user id."
+      "description": "Platform user ID when available."
     },
     {
       "name": "username",
       "example": "alex_kim",
-      "description": "Username, empty when the account has none."
-    },
-    {
-      "name": "lastseen",
-      "example": "2026-04-26 17:01:17",
-      "description": "The most recent online time observed."
+      "description": "Platform username when available."
     },
     {
       "name": "activedays",
-      "example": "130",
-      "description": "Days since that activity — smaller is more recent."
-    },
-    {
-      "name": "member",
-      "example": "no",
-      "description": "Whether the account has Telegram Premium."
+      "example": "9",
+      "description": "Activity-day signal when available. Telegram privacy may coarsen it to 0, 7, 30 or 1000; it is not an exact login timestamp."
     }
   ],
   "statuses": [
@@ -83,5 +73,5 @@
   "pricing_url": "https://tgvalidator.com/pricing",
   "maintainer": "TG Validator",
   "license": "MIT",
-  "last_reviewed": "2026-09-22"
+  "last_reviewed": "2026-10-30"
 }
